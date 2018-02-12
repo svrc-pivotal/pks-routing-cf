@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+trap 'echo "Stopping announce loop at $(date --rfc-3339=seconds)"' 0
+export PS4='+\t (${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+set -x
+
+register_interval=30
+
+echo "Announcing route every ${register_interval} seconds"
+while [ true ]; do
+        ./announce_route
+        sleep ${register_interval}
+done
+
+

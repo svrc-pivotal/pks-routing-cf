@@ -1,0 +1,7 @@
+---
+applications:
+- name: pks_api_route
+  memory: 128M
+  buildpack: binary-buildpack
+  
+
