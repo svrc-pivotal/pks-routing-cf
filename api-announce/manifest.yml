@@ -2,6 +2,15 @@
 applications:
 - name: pks_api_route
   memory: 128M
-  buildpack: binary-buildpack
-  
+  buildpack: binary_buildpack
+  health-check-type: process
+  no-route: true
+  env:
+    BACKEND_PORT: 8443
+    KUBO_PORT: your-tcp-router-port-for-k8s
+    BACKEND_IP: your-k8s-master-ip-address
+    UAA_API_URL: https://uaa.your-cf-system-domain
+    UAA_CLIENT_ID: tcp_emitter
+    UAA_CLIENT_SECRET: your-tcp-emitter-uaa-secret
+    CLOUD_FOUNDRY_API_URL: https://api.your-cf-system-domain
 
